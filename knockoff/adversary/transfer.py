@@ -2,6 +2,9 @@
 """This is a short description.
 Replace this with a more detailed description of what this file contains.
 """
+import torch
+torch.cuda.current_device()
+
 import argparse
 import os.path as osp
 import os
@@ -9,11 +12,14 @@ import pickle
 import json
 from datetime import datetime
 
+import sys
+sys.path.append('/content/gdrive/MyDrive/Colab Notebooks/knockoffnets/') # for knockoff import 
+
 import numpy as np
 
 from tqdm import tqdm
 
-import torch
+# import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim

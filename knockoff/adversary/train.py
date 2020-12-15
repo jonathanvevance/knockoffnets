@@ -2,6 +2,10 @@
 """This is a short description.
 Replace this with a more detailed description of what this file contains.
 """
+
+import sys
+sys.path.append('/content/gdrive/MyDrive/Colab Notebooks/knockoffnets/') # for knockoff import 
+
 import argparse
 import json
 import os
