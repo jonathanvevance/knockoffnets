@@ -1,6 +1,8 @@
 # Custom
 .idea
 data/
+models/adversary/caltech256-resnet34-random
+models/victim/caltech256-resnet34
 
 
 # Byte-compiled / optimized / DLL files
