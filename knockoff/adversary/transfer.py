@@ -13,7 +13,7 @@ import json
 from datetime import datetime
 
 import sys
-sys.path.append('/content/gdrive/MyDrive/Colab Notebooks/knockoffnets/') # for knockoff import 
+sys.path.append('D:\Courses\Privacy\knockoffnets') # for knockoff import 
 
 import numpy as np
 
@@ -126,7 +126,6 @@ def main():
 
     out_path = params['out_dir']
     knockoff_utils.create_dir(out_path)
-
     torch.manual_seed(cfg.DEFAULT_SEED)
     if params['device_id'] >= 0:
         os.environ["CUDA_VISIBLE_DEVICES"] = str(params['device_id'])
