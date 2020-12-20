@@ -102,7 +102,7 @@ def get_optimizer(parameters, optimizer_type, lr=0.01, momentum=0.5, **kwargs):
 def main():
     parser = argparse.ArgumentParser(description='Train a model')
     # Required arguments
-    parser.add_argument('model_dir', metavar='DIR', type=str, help='Directory containing transferset.pickle')
+    parser.add_argument('model_dir', metavar='DIR', type=str, help='Directory containing transferset.npy')
     parser.add_argument('model_arch', metavar='MODEL_ARCH', type=str, help='Model name')
     parser.add_argument('testdataset', metavar='DS_NAME', type=str, help='Name of test')
     parser.add_argument('--budgets', metavar='B', type=str,
@@ -138,14 +138,15 @@ def main():
     if params['device_id'] >= 0:
         os.environ["CUDA_VISIBLE_DEVICES"] = str(params['device_id'])
         device = torch.device('cuda')
+        print('Running on GPU')
     else:
         device = torch.device('cpu')
+        print('Running on CPU')
     model_dir = params['model_dir']
 
     # ----------- Set up transferset
-    transferset_path = osp.join(model_dir, 'transferset.pickle')
-    with open(transferset_path, 'rb') as rf:
-        transferset_samples = pickle.load(rf)
+    transferset_path = osp.join(model_dir, 'transferset.pt')
+    transferset_samples = torch.load(transferset_path, map_location = device)
     num_classes = transferset_samples[0][1].size(0)
     print('=> found transfer set with {} samples, {} classes'.format(len(transferset_samples), num_classes))
 

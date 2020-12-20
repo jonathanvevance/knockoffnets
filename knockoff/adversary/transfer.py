@@ -152,8 +152,7 @@ def main():
 
     # ----------- Initialize adversary
     batch_size = params['batch_size']
-    nworkers = params['nworkers']
-    transfer_out_path = osp.join(out_path, 'transferset.pickle')
+    transfer_out_path = osp.join(out_path, 'transferset.pt')
     if params['policy'] == 'random':
         adversary = RandomAdversary(blackbox, queryset, batch_size=batch_size)
     elif params['policy'] == 'adaptive':
@@ -163,8 +162,7 @@ def main():
 
     print('=> constructing transfer set...')
     transferset = adversary.get_transferset(params['budget'])
-    with open(transfer_out_path, 'wb') as wf:
-        pickle.dump(transferset, wf)
+    torch.save(transferset, transfer_out_path)
     print('=> transfer set ({} samples) written to: {}'.format(len(transferset), transfer_out_path))
 
     # Store arguments
