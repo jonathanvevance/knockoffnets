@@ -102,7 +102,7 @@ def get_optimizer(parameters, optimizer_type, lr=0.01, momentum=0.5, **kwargs):
 def main():
     parser = argparse.ArgumentParser(description='Train a model')
     # Required arguments
-    parser.add_argument('model_dir', metavar='DIR', type=str, help='Directory containing transferset.npy')
+    parser.add_argument('model_dir', metavar='DIR', type=str, help='Directory containing transferset.pt')
     parser.add_argument('model_arch', metavar='MODEL_ARCH', type=str, help='Model name')
     parser.add_argument('testdataset', metavar='DS_NAME', type=str, help='Name of test')
     parser.add_argument('--budgets', metavar='B', type=str,
