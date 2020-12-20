@@ -164,8 +164,7 @@ def main():
 
     print('=> constructing transfer set...')
     transferset = adversary.get_transferset(params['budget'])
-    with open(transfer_out_path, 'wb') as wf:
-        pickle.dump(transferset, wf)
+    torch.save(transferset, transfer_out_path)
     print('=> transfer set ({} samples) written to: {}'.format(len(transferset), transfer_out_path))
 
     # Store arguments
